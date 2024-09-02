@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AROGYAM : Mental Health</title>
+    <link rel="stylesheet" href="Style.css">
+        <link rel="shortcut icon" href="Images/logo.png" type="image/x-icon" />
+    <style type="text/css" media="all">
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('Images/depression.jpeg');
+            background-repeat: no-repeat;
+  background-size: cover;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container, .quiz-container, .result-container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(154,205,50,0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        button {
+            background-color: rgb(0,0,0);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+     
+
+        .options button {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .result-container a {
+            display: inline-block;
+            margin-top: 20px;
+            color: black;
+            text-decoration: none;
+        }
+
+        .result-container a:hover {
+            text-decoration: underline;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            background-color: #f3f3f3;
+            margin: 20px 0;
+            height: 20px;
+            border-radius: 10px;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: #4CAF50;
+            border-radius: 10px;
+        }
+        .wrapper{
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          
+          justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+            <nav class="navbar">
+
+      <div class="title"><img src="Images/logo.png" alt="">AROGYAM</div>
+
+      <div>
+        <ul>
+          <li><a href="Yoga.html">Yoga</a></li>
+          <li><a href="Mental_Health.html">Mental Health</a></li>
+          <li><a href="Nutrition.html">Nutrition</a></li>
+          <li><a href="Tools.html">Tools</a></li>
+          <li><a href="Blog.html">Blog</a></li>
+      </ul>
+      </div>
+      </nav>
+      <div class="wrapper">
+            <div class="container">
+        <h1>Know if you are depressed.</h1>
+        <p>Sadness is a normal human emotion whereas depression is a mental health concern that can affect how you think, feel or behave in many ways. Take this quiz to find out whether you are experiencing signs of depression.</p><br /><p><b>Things to Remember Before You Start the Quiz</b></p><br /><p>Please consider your thoughts, feelings and actions in the last 2 weeks.</p><br /><p>Choose the response that you relate with the most</p> <br /><p>There are no right or wrong answers to the questions. </p><br /><p></p>Please answer all questions to get your results.</p>
+        <button id="startQuizBtn">Start Quiz</button>
+    </div>
+
+    <div class="quiz-container" id="quizContainer" style="display: none;">
+        <div class="progress-bar-container">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+        <h2 id="question"></h2>
+        <div class="options">
+            <button onclick="selectAnswer(0)">Not at all</button>
+            <button onclick="selectAnswer(1)">Several days</button>
+            <button onclick="selectAnswer(2)">More than half the days</button>
+            <button onclick="selectAnswer(3)">Nearly every day</button>
+        </div>
+    </div>
+
+    <div class="result-container" id="resultContainer" style="display: none;">
+        <h2>Your Result</h2>
+        <p id="resultText"></p>
+        <a href="https://www.healthline.com/health/depression/how-to-fight-depression#What-helps-people-cope-with-depression?">View Resources</a>
+    </div>
+    
+    
+      </div>
+
+
+    <script>
+        const questions = [
+            "How often do you feel down or hopeless?",
+            "Are you experiencing a loss of interest in activities you once enjoyed?",
+            "Have you noticed changes in your sleep patterns?",
+            "Do you feel tired or have low energy most days?",
+            "Do you find it hard to concentrate on tasks?",
+            "Have you had thoughts of harming yourself?",
+            "Do you feel you should be (or are being) punished?",
+            "Do you feel guilty?",
+            "Do you have difficulty making decisions?",
+            "Do you believe that nothing will ever work out for you?",
+            "Do you feel irritated?",
+            "Do you feel restless and anxious?",
+            "Do you cry (or feel like crying)?",
+            "Do you feel like a failure?",
+            "Do you feel like you are alone (or want to be alone)?",
+            "Does it take you a lot of effort to do the smallest of things?",
+            "Do you think your life isn’t worth living?",
+            "Are you eating significantly more (or less) than usual?"
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        const totalQuestions = questions.length;
+
+        document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
+
+        function startQuiz() {
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('quizContainer').style.display = 'block';
+            showQuestion();
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentQuestionIndex / totalQuestions) * 100).toFixed(2);
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function showQuestion() {
+            document.getElementById('question').innerText = questions[currentQuestionIndex];
+            updateProgressBar();
+        }
+
+        function selectAnswer(points) {
+            score += points;
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('quizContainer').style.display = 'none';
+            document.getElementById('resultContainer').style.display = 'block';
+
+            let resultText = "";
+            
+            if (score <= 5) {
+                resultText = "Your results suggest you might be feeling a bit down. Consider talking to someone you trust.";
+                document.getElementById('resultContainer').style.backgroundColor="lightgreen";
+            } else if (score <= 10) {
+                resultText = "Your results suggest moderate sadness. Consider practicing self-care and monitoring your feelings.";
+                document.getElementById('resultContainer').style.backgroundColor="yellow";
+            } else if (score <= 15) {
+                resultText = "Your results suggest you might be experiencing high levels of sadness or depression. Please consider reaching out to a mental health professional.";
+                document.getElementById('resultContainer').style.backgroundColor="orange";
+            } else {
+                resultText = "Your results indicate severe symptoms. It is strongly advised that you seek immediate help from a mental health professional.";
+                document.getElementById('resultContainer').style.backgroundColor="red";
+            }
+
+            document.getElementById('resultText').innerText = resultText;
+        }
+    </script>
+</body>
+</html>

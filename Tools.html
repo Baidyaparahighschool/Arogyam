@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css" type="text/css" media="all" />
+    <link rel="shortcut icon" href="Images/logo.png" type="image/x-icon" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>AROGYAM : Tools</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-y: hidden;
+
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            padding: 20px;
+            background: rgba(154, 205, 50, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            overflow-y: scroll;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 2px 2px 2px black;
+            background-color: #BEDC74;
+        }
+
+        .result {
+            font-size: 1.2em;
+            text-align: center;
+            padding: 10px;
+            background-color: inherit;
+
+        }
+
+        .box {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+
+        .calculators {
+            height: 60vh;
+            width: auto;
+            max-width: 22vw;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            border-radius: 10px;
+            padding: 10px;
+            align-items: center;
+            text-align: center;
+            box-shadow: 4px 4px 4px black;
+            z-index: 999;
+        }
+
+        .calculators:hover {
+            transform: rotateY(360deg);
+        }
+
+        .calculators img {
+            width: 20vw;
+            border-radius: 10px;
+        }
+
+        #bmi,
+        #calorie,
+        #bodyfat,
+        #sleep {
+            display: none;
+            border-radius: 10px;
+
+
+        }
+
+        .display-calculator {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("Images/banner3.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow-y: scroll;
+
+        }
+
+        svg {
+            position: absolute;
+            top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+            background-color: grey;
+        }
+
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="title"><img src="Images/logo.png" alt="">AROGYAM</div>
+        <div>
+            <ul>
+                <li><a href="Yoga.html">Yoga</a></li>
+                <li><a href="Mental_Health.html">Mental Health</a></li>
+                <li><a href="Nutrition.html">Nutrition</a></li>
+                <li><a href="Tools.html">Tools</a></li>
+                <li><a href="Blog.html">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="box" id="box">
+        <svg id="wave" style="transform:rotate(180deg); transition: 0.3s" viewBox="0 0 1440 490" version="1.1"
+            xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
+                    <stop stop-color="rgba(255, 159.546, 0, 1)" offset="0%"></stop>
+                    <stop stop-color="rgba(255, 82.54, 0, 1)" offset="100%"></stop>
+                </linearGradient>
+            </defs>
+            <path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)"
+                d="M0,196L48,196C96,196,192,196,288,228.7C384,261,480,327,576,359.3C672,392,768,392,864,334.8C960,278,1056,163,1152,147C1248,131,1344,212,1440,269.5C1536,327,1632,359,1728,351.2C1824,343,1920,294,2016,236.8C2112,180,2208,114,2304,114.3C2400,114,2496,180,2592,204.2C2688,229,2784,212,2880,204.2C2976,196,3072,196,3168,204.2C3264,212,3360,229,3456,236.8C3552,245,3648,245,3744,212.3C3840,180,3936,114,4032,98C4128,82,4224,114,4320,138.8C4416,163,4512,180,4608,220.5C4704,261,4800,327,4896,351.2C4992,376,5088,359,5184,326.7C5280,294,5376,245,5472,220.5C5568,196,5664,196,5760,163.3C5856,131,5952,65,6048,73.5C6144,82,6240,163,6336,220.5C6432,278,6528,310,6624,294C6720,278,6816,212,6864,179.7L6912,147L6912,490L6864,490C6816,490,6720,490,6624,490C6528,490,6432,490,6336,490C6240,490,6144,490,6048,490C5952,490,5856,490,5760,490C5664,490,5568,490,5472,490C5376,490,5280,490,5184,490C5088,490,4992,490,4896,490C4800,490,4704,490,4608,490C4512,490,4416,490,4320,490C4224,490,4128,490,4032,490C3936,490,3840,490,3744,490C3648,490,3552,490,3456,490C3360,490,3264,490,3168,490C3072,490,2976,490,2880,490C2784,490,2688,490,2592,490C2496,490,2400,490,2304,490C2208,490,2112,490,2016,490C1920,490,1824,490,1728,490C1632,490,1536,490,1440,490C1344,490,1248,490,1152,490C1056,490,960,490,864,490C768,490,672,490,576,490C480,490,384,490,288,490C192,490,96,490,48,490L0,490Z">
+            </path>
+            <defs>
+                <linearGradient id="sw-gradient-1" x1="0" x2="0" y1="1" y2="0">
+                    <stop stop-color="rgba(228.355, 128.068, 0, 1)" offset="0%"></stop>
+                    <stop stop-color="rgba(255, 80.755, 0, 1)" offset="100%"></stop>
+                </linearGradient>
+            </defs>
+            <path style="transform:translate(0, 50px); opacity:0.9" fill="url(#sw-gradient-1)"
+                d="M0,98L48,130.7C96,163,192,229,288,269.5C384,310,480,327,576,310.3C672,294,768,245,864,204.2C960,163,1056,131,1152,155.2C1248,180,1344,261,1440,302.2C1536,343,1632,343,1728,343C1824,343,1920,343,2016,351.2C2112,359,2208,376,2304,359.3C2400,343,2496,294,2592,261.3C2688,229,2784,212,2880,196C2976,180,3072,163,3168,204.2C3264,245,3360,343,3456,351.2C3552,359,3648,278,3744,269.5C3840,261,3936,327,4032,367.5C4128,408,4224,425,4320,424.7C4416,425,4512,408,4608,408.3C4704,408,4800,425,4896,408.3C4992,392,5088,343,5184,277.7C5280,212,5376,131,5472,155.2C5568,180,5664,310,5760,326.7C5856,343,5952,245,6048,220.5C6144,196,6240,245,6336,285.8C6432,327,6528,359,6624,367.5C6720,376,6816,359,6864,351.2L6912,343L6912,490L6864,490C6816,490,6720,490,6624,490C6528,490,6432,490,6336,490C6240,490,6144,490,6048,490C5952,490,5856,490,5760,490C5664,490,5568,490,5472,490C5376,490,5280,490,5184,490C5088,490,4992,490,4896,490C4800,490,4704,490,4608,490C4512,490,4416,490,4320,490C4224,490,4128,490,4032,490C3936,490,3840,490,3744,490C3648,490,3552,490,3456,490C3360,490,3264,490,3168,490C3072,490,2976,490,2880,490C2784,490,2688,490,2592,490C2496,490,2400,490,2304,490C2208,490,2112,490,2016,490C1920,490,1824,490,1728,490C1632,490,1536,490,1440,490C1344,490,1248,490,1152,490C1056,490,960,490,864,490C768,490,672,490,576,490C480,490,384,490,288,490C192,490,96,490,48,490L0,490Z">
+            </path>
+        </svg>
+        <div class="calculators" style="background: rgb(2,0,36);
+background: -moz-linear-gradient(360deg, rgba(2,0,36,1) 0%, rgba(9,121,84,1) 49%, rgba(0,212,255,1) 100%);
+background: -webkit-linear-gradient(360deg, rgba(2,0,36,1) 0%, rgba(9,121,84,1) 49%, rgba(0,212,255,1) 100%);
+background: linear-gradient(360deg, rgba(2,0,36,1) 0%, rgba(9,121,84,1) 49%, rgba(0,212,255,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=" #020024",endColorstr="#00d4ff" ,GradientType=1);"
+            id="bmibtn">
+            <img src="Images/bmi.jpeg" alt="" />
+            <h2>Calculate your BMI(Body Mass Index)</h2>
+            <h4>Body mass index (BMI) is a calculation that estimates body fat based on height and weight</h4>
+        </div>
+        <div class="calculators" style="background: rgb(253,29,29);
+background: -moz-linear-gradient(90deg, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 100%);
+background: linear-gradient(90deg, rgba(253,29,29,1) 0%, rgba(252,176,69,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=" #fd1d1d",endColorstr="#fcb045" ,GradientType=1);"
+            id="caloriebtn">
+            <img src="Images/calorie.jpeg" alt="" />
+            <h2>Calorie Calculator</h2>
+            <h3>Use the calorie calculator to estimate the number of daily calories your body needs to maintain your
+                current weight.</h3>
+        </div>
+        <div class="calculators" style="background-color: #0093E9;
+background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+" id="sleepbtn">
+            <img src="Images/sleep.jpeg" alt="" />
+            <h2>Sleep monitor</h2>
+            <h3>Sleep is as important for good health as diet and exercise.</h3>
+        </div>
+        <div class="calculators" style="background-color: #4158D0;
+background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+" id="bodyfatbtn">
+            <img src="Images/bodyfat.jpeg" alt="" />
+            <h2>Calculate your body fat</h2>
+            <h3>The body fat percentage of an organism is the total mass of its fat divided by its total body mass,
+                multiplied by 100</h3>
+        </div>
+    </div>
+
+    <div id="display-calculator" class="display-calculator">
+        <div class="container">
+            <h1>Health Monitoring System</h1>
+
+            <!-- BMI Calculator Section -->
+            <div id="bmi">
+                <h2>BMI Calculator</h2>
+                <label for="height">Height (cm):</label>
+                <input type="number" id="height" placeholder="Enter your height">
+                <label for="weight">Weight (kg):</label>
+                <input type="number" id="weight" placeholder="Enter your weight">
+                <button onclick="calculateBMI()">Calculate BMI</button>
+                <h3>BMI Categories</h3>
+                <table>
+                    <tr>
+                        <th>Category</th>
+                        <th>BMI Range</th>
+                    </tr>
+                    <tr style="background-color: #ADD8E6;"> <!-- Light Blue for Underweight -->
+                        <td>Underweight</td>
+                        <td>Less than 18.5</td>
+                    </tr>
+                    <tr style="background-color: #90EE90;"> <!-- Light Green for Normal weight -->
+                        <td>Normal weight</td>
+                        <td>18.5–24.9</td>
+                    </tr>
+                    <tr style="background-color: #FFD700;"> <!-- Gold for Overweight -->
+                        <td>Overweight</td>
+                        <td>25–29.9</td>
+                    </tr>
+                    <tr style="background-color: #FF6347;"> <!-- Tomato Red for Obesity -->
+                        <td>Obesity</td>
+                        <td>30 or greater</td>
+                    </tr>
+                </table>
+
+
+                <div class="result" id="bmiResult"></div>
+                
+            </div>
+
+            <!-- Calorie Calculator Section -->
+            <div id="calorie">
+                <h2>Calorie Calculator</h2>
+                <label for="age">Age:</label>
+                <input type="number" id="age" placeholder="Enter your age">
+                <label for="gender">Gender:</label>
+                <select id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <label for="activity">Activity Level:</label>
+                <select id="activity">
+                    <option value="1.2">Sedentary (little or no exercise)</option>
+                    <option value="1.375">Lightly active (light exercise 1-3 days/week)</option>
+                    <option value="1.55">Moderately active (moderate exercise 3-5 days/week)</option>
+                    <option value="1.725">Very active (hard exercise 6-7 days a week)</option>
+                    <option value="1.9">Super active (very hard exercise, physical job, etc.)</option>
+                </select>
+                <label for="calWeight">Weight (kg):</label>
+                <input type="number" id="calWeight" placeholder="Enter your weight">
+                <label for="calHeight">Height (cm):</label>
+                <input type="number" id="calHeight" placeholder="Enter your height">
+                <button onclick="calculateCalories()">Calculate Calories</button>
+                <div class="result" id="calorieResult"></div>
+               
+            </div>
+
+            <!-- Sleep Monitoring Section -->
+            <div id="sleep">
+                <h2>Sleep Monitoring</h2>
+                <label for="bedTime">Bed Time:</label>
+                <input type="time" id="bedTime">
+                <label for="wakeTime">Wake Up Time:</label>
+                <input type="time" id="wakeTime">
+                <label for="age2">Age:</label>
+                <input type="number" id="age2" placeholder="Enter your age">
+                <button onclick="monitorSleep()">Calculate Sleep Duration</button>
+                <div class="result" id="sleepResult"></div>
+                
+            </div>
+
+            <!-- Body Fat Calculator Section -->
+            <div id="bodyfat">
+                <h2>Body Fat Calculator</h2>
+                <label for="bfGender">Gender:</label>
+                <select id="bfGender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <label for="bfHeight">Height (cm):</label>
+                <input type="number" id="bfHeight" placeholder="Enter your height">
+                <label for="bfWaist">Waist Circumference (cm):</label>
+                <input type="number" id="bfWaist" placeholder="Enter your waist circumference">
+                <label for="bfNeck">Neck Circumference (cm):</label>
+                <input type="number" id="bfNeck" placeholder="Enter your neck circumference">
+                <div id="femaleInputs">
+                    <label for="bfHip">Hip Circumference (cm) (Females only):</label>
+                    <input type="number" id="bfHip" placeholder="Enter your hip circumference">
+                </div>
+                <button onclick="calculateBodyFat()">Calculate Body Fat</button>
+                <div class="result" id="bfResult"></div>
+               
+            </div>
+            <button type="submit" class="back" id="back">Back</button>
+        </div>
+    </div>
+
+    <script>
+
+        $(".calculators").click(function () {
+            $('html,body').animate({
+                scrollTop: $("#display-calculator").offset().top
+            },
+                'slow');
+        });
+
+        $(".back").click(function () {
+            $('html,body').animate({
+                scrollTop: $("#box").offset().top
+            },
+                'slow');
+        });
+
+        let bmibtn = document.getElementById('bmibtn');
+        let caloriebtn = document.getElementById('caloriebtn');
+        let sleepbtn = document.getElementById('sleepbtn');
+        let bodyfatbtn = document.getElementById('bodyfatbtn');
+        let bmi = document.getElementById('bmi');
+        let calorie = document.getElementById('calorie');
+        let sleep = document.getElementById('sleep');
+        let bodyfat = document.getElementById('bodyfat');
+        let back = document.getElementById('back');
+        back.addEventListener('click', function () {
+            bmi.style.display = 'none';
+            calorie.style.display = 'none';
+            sleep.style.display = 'none';
+            bodyfat.style.display = 'none';
+        })
+        bmibtn.addEventListener('click', function () {
+            bmi.style.display = 'block';
+            calorie.style.display = 'none';
+            sleep.style.display = 'none';
+            bodyfat.style.display = 'none';
+        });
+
+        caloriebtn.addEventListener('click', function () {
+            bmi.style.display = 'none';
+            calorie.style.display = 'block';
+            sleep.style.display = 'none';
+            bodyfat.style.display = 'none';
+        });
+
+        sleepbtn.addEventListener('click', function () {
+            bmi.style.display = 'none';
+            calorie.style.display = 'none';
+            sleep.style.display = 'block';
+            bodyfat.style.display = 'none';
+        });
+
+        bodyfatbtn.addEventListener('click', function () {
+            bmi.style.display = 'none';
+            calorie.style.display = 'none';
+            sleep.style.display = 'none';
+            bodyfat.style.display = 'block';
+        });
+
+        function calculateBMIRank(bmi) {
+            if (bmi < 18.5) return { rank: 'Underweight', color: '#ADD8E6' }; // Light Blue
+            else if (bmi >= 18.5 && bmi < 24.9) return { rank: 'Normal weight', color: '#90EE90' }; // Light Green
+            else if (bmi >= 25 && bmi < 29.9) return { rank: 'Overweight', color: '#FFD700' }; // Gold
+            else return { rank: 'Obesity', color: '#FF6347' }; // Tomato
+        }
+
+        function calculateBodyFatRank(bodyFat) {
+            // Example implementation, adjust the ranges as per your requirements
+            if (bodyFat < 10) return { rank: 'Essential Fat', color: '#90EE90' }; // Light Green
+            else if (bodyFat < 20) return { rank: 'Athletes', color: '#ADD8E6' }; // Light Blue
+            else if (bodyFat < 24) return { rank: 'Fitness', color: '#FFD700' }; // Gold
+            else if (bodyFat < 31) return { rank: 'Average', color: '#FFA07A' }; // Light Salmon
+            else return { rank: 'Obese', color: '#FF6347' }; // Tomato
+        }
+
+        function calculateSleepRank(hours, age) {
+            let recommendedHours;
+            if (age <= 5) recommendedHours = 10;
+            else if (age <= 13) recommendedHours = 9;
+            else if (age <= 17) recommendedHours = 8;
+            else if (age <= 64) recommendedHours = 7;
+            else recommendedHours = 7;
+
+            return (hours >= recommendedHours) ? { rank: 'Good', color: '#90EE90' } : { rank: 'Needs Improvement', color: '#FF6347' };
+        }
+
+        function calculateBMI() {
+            const height = parseFloat(document.getElementById('height').value) / 100;
+            const weight = parseFloat(document.getElementById('weight').value);
+            if (!isNaN(height) && !isNaN(weight)) {
+                const bmi = (weight / (height * height)).toFixed(2);
+                const rank = calculateBMIRank(bmi);
+                document.getElementById('bmiResult').textContent = `Your BMI is ${bmi} (${rank.rank})`;
+                document.getElementById('bmiResult').style.backgroundColor = rank.color;
+            } else {
+                document.getElementById('bmiResult').textContent = 'Please enter valid height and weight.';
+            }
+        }
+
+        function calculateCalories() {
+
+            const age = parseInt(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
+            const activityLevel = parseFloat(document.getElementById('activity').value);
+            const weight = parseFloat(document.getElementById('calWeight').value);
+            const height = parseFloat(document.getElementById('calHeight').value);
+
+            if (!isNaN(age) && !isNaN(weight) && !isNaN(height)) {
+
+                let bmr;
+                if (gender === 'male') {
+                    bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+
+                } else {
+                    bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+
+                }
+                const dailyCalories = (bmr * activityLevel).toFixed(2);
+                const advice = getCalorieAdvice(dailyCalories);
+                //  alert(height);
+                document.getElementById('calorieResult').style.backgroundColor = 'yellow';
+                document.getElementById('calorieResult').style.color = 'black';
+                document.getElementById('calorieResult').innerHTML = `Maintenance: ${advice.maintenance} calories/day.<br/>
+                Mild Weight Loss: ${advice.mildWeightLoss} calories/day.<br/>
+                Weight Loss: ${advice.weightLoss} calories/day.<br/>
+                Extreme Weight Loss: ${advice.extremeWeightLoss} calories/day.<br/>
+                Weight Gain: ${advice.weightGain} calories/day.`;
+            } else {
+                document.getElementById('calorieResult').textContent = 'Please enter all the details correctly.';
+            }
+        }
+
+        function getCalorieAdvice(calories) {
+            calories = parseFloat(calories); // Ensure calories is a number
+            return {
+                weightGain: (calories + 500).toFixed(2),
+                mildWeightLoss: (calories - 250).toFixed(2),
+                weightLoss: (calories - 500).toFixed(2),
+                extremeWeightLoss: (calories - 1000).toFixed(2),
+                maintenance: calories.toFixed(2)
+            };
+        }
+
+
+        function monitorSleep() {
+            const bedTime = document.getElementById('bedTime').value;
+            const wakeTime = document.getElementById('wakeTime').value;
+            const ageValue = document.getElementById('age2').value;
+
+            // Debugging: Log raw input values
+            console.log("Raw Age Value:", ageValue);
+
+            // Parse age as a number, ensuring it's a valid integer
+            const age = parseInt(ageValue, 10);
+
+            // Debugging: Log parsed age
+            console.log("Parsed Age:", age);
+
+            if (bedTime && wakeTime && !isNaN(age)) {
+                const bed = new Date(`1970-01-01T${bedTime}Z`);
+                const wake = new Date(`1970-01-01T${wakeTime}Z`);
+
+                // Debugging: Log the Date objects
+                console.log("Bed Time (Date):", bed);
+                console.log("Wake Time (Date):", wake);
+
+                let duration = (wake - bed) / (1000 * 60 * 60); // Convert milliseconds to hours
+
+                // Debugging: Log the calculated duration
+                console.log("Initial Duration (hours):", duration);
+
+                if (duration < 0) {
+                    duration += 24; // If the wake-up time is on the next day
+                    // Debugging: Log the adjusted duration
+                    console.log("Adjusted Duration (hours):", duration);
+                }
+
+                const rank = calculateSleepRank(duration, age);
+
+                // Display the result with debugging
+                console.log(`You slept for ${duration.toFixed(2)} hours. ${rank.rank}`);
+                document.getElementById('sleepResult').textContent = `You slept for ${duration.toFixed(2)} hours. ${rank.rank}`;
+                document.getElementById('sleepResult').style.backgroundColor = rank.color;
+            } else {
+                // Debugging: Log if the inputs are incorrect
+                console.log("Invalid inputs for sleep monitoring.");
+                document.getElementById('sleepResult').textContent = 'Please enter all details correctly.';
+            }
+        }
+
+
+        function calculateBodyFat() {
+            const gender = document.getElementById('bfGender').value;
+            const height = parseFloat(document.getElementById('bfHeight').value);
+            const waist = parseFloat(document.getElementById('bfWaist').value);
+            const neck = parseFloat(document.getElementById('bfNeck').value);
+            const hip = parseFloat(document.getElementById('bfHip').value);
+
+            if (!isNaN(height) && !isNaN(waist) && !isNaN(neck)) {
+                let bodyFat;
+                if (gender === 'male') {
+                    bodyFat = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
+                } else {
+                    if (!isNaN(hip)) {
+                        bodyFat = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.221 * Math.log10(height)) - 450;
+                    } else {
+                        document.getElementById('bfResult').textContent = 'Please enter all the measurements.';
+                        return;
+                    }
+                }
+                const rank = calculateBodyFatRank(bodyFat);
+                document.getElementById('bfResult').textContent = `Your body fat percentage is ${bodyFat.toFixed(2)}% (${rank.rank})`;
+                document.getElementById('bfResult').style.backgroundColor = rank.color;
+            } else {
+                document.getElementById('bfResult').textContent = 'Please enter all the measurements.';
+            }
+        }
+
+        // Hide/Show hip input for males/females
+        document.getElementById('bfGender').addEventListener('change', function () {
+            const gender = this.value;
+            if (gender === 'female') {
+                document.getElementById('femaleInputs').style.display = 'block';
+            } else {
+                document.getElementById('femaleInputs').style.display = 'none';
+            }
+        });
+
+        // Hide hip input for males by default
+        document.getElementById('femaleInputs').style.display = 'none';
+    </script>
+</body>
+
+</html>

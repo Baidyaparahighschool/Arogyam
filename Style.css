@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    /* background-image: url('/background.jpeg'); */ /* Optional: You can add a background image */
+    /* background-size: cover; */
+    margin:0px !important;
+    padding: 0px !important;
+    
+/*     background-position: center;
+    height: 100vh; */
+}
+
+.navbar {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+     background-color:  rgba(255, 255,255, 0.4);  /* Adjust the transparency here */
+  z-index: 20;
+    backdrop-filter: blur(10px); /* Optional: Adds a blur effect */
+    padding: 20px 0;
+
+height: 50px;
+align-items: center;
+}
+.cont div img{
+  width: 500px;
+  height: auto;
+}
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.navbar ul li {
+    margin: 0 15px;
+    align-items: center;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color:black;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.navbar ul li a:hover {
+    color: black;
+}
+
+.content {
+   display: flex;
+   justify-content:center;
+    width: 90vw;
+    height: 90vh;
+    margin-top: 60px;
+    background-color: rgb(43, 41, 41);
+    border-radius: 20px;
+    z-index:1;
+}
+.image-holder{
+  width: 90vw;
+  height: 90vh;
+   z-index: 4;
+   margin-top: 60px;
+   position: absolute;
+   background-color: transparent;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.images{
+  width: 30vw;
+  height: auto;
+  height: auto;
+  position: absolute;
+ 
+  border-radius: 50%;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+.title{
+  font-family: "Caveat", cursive;
+padding: auto;
+  font-optical-sizing: auto;
+font-size: 22px;
+  font-weight: 700;
+  font-style: normal;
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  color: black;
+  margin-left: 40px;
+  
+}
+.title img{
+  width: 40px;
+}
+.text{
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 90vh;
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  padding: auto;
+  text-align: center;
+  color: black;
+  font-size: 28px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+.cont{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+  position: absolute;
+}
+.cont div{
+  width: 50%;
+  text-align: center;
+  font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  padding: 20px;
+}
+.cont div h1{
+  font-size: 28px;
+}
+.cont div p{
+  font-family: Verdana;
+  font-size: 18px;
+}
+.cont div button{
+  width: 10vw;
+  padding: 10px 15px;
+  background-color: yellowgreen;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 22px;
+  margin:40px;
+}
+.cont div button:hover{
+  background-color: white;
+  border: 1px solid yellowgreen;
+  color: yellowgreen;
+}

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="shortcut icon" href="Images/logo.png" type="image/x-icon" />
+  <title>AROGYAM : Nutrition</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+    body {
+      overflow-y: hidden;
+      overflow-x: hidden;
+    }
+
+    .con {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      z-index: 10;
+      flex-direction: row;
+    
+
+    }
+
+    .con div {
+      width: auto;
+      padding: 20px;
+      height: 80vh;
+      position: absolute;
+      text-align: left;
+      border-radius: 10px;
+      font-family: Verdana;
+      font-optical-sizing: auto;
+      font-weight: 700;
+      font-style: normal;
+      color: black;
+      font-size: 18px;
+      
+      position: absolute;
+      top: 150px;
+    }
+
+    .con div {
+      width: 60%
+    }
+
+    .con img {
+      width: 700px;
+      height: auto;
+      border-radius: 300px 0 0 300px;
+      position: absolute;
+      right: -200px;
+      top: -100px;
+    }
+
+    .card-container {
+      width: 100vw;
+      height: 80vh;
+      position: absolute;
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      
+      margin-top: 100px;
+      align-items: flex-end;
+    }
+
+    .card {
+      width: auto;
+      height: auto;
+      padding: 10px 10px;
+      font-size: 22px;
+      background-color: rgba(255, 255, 255, 0.948);
+      border-radius: 5px;
+      border: 1px solid yellowgreen;
+      margin-bottom: 20px;
+      color: black;
+      z-index: 99;
+      font-weight: 700;
+      position: relative;
+      max-width: 40%;
+      font-family: "Caveat", Cursive;
+    }
+
+    .diet-div {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 100vh;
+      background: url(Images/banner5.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      overflow-y: scroll;
+    }
+
+    #generator {
+      width: auto;
+      height: auto;
+      font-size: 22px;
+      padding: 10px;
+      background-color: yellowgreen;
+      color: black;
+      border-radius: 10px;
+      border: none;
+      z-index: 999;
+    }
+
+    .generator {
+      font-size: 22px;
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 4px 4px 4px black;
+      padding: 20px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.6);
+      
+      
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 15px;
+      border-radius: 5px;
+      border: none;
+      box-shadow: 2px 2px 2px black;
+      background-color: #ccc;
+    }
+
+    .submit {
+      background-color: white;
+      color: black;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    #dietPlan{
+      width: 50vw;
+      padding: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar" style="background-color: rgba(255, 255, 255, 0.4);">
+    <div class="title">
+      <img src="Images/logo.png" alt="">AROGYAM
+    </div>
+    <div>
+      <ul>
+        <li><a href="Yoga.html">Yoga</a></li>
+        <li><a href="Mental_Health.html">Mental Health</a></li>
+        <li><a href="Nutrition.html">Nutrition</a></li>
+        <li><a href="Tools.html">Tools</a></li>
+        <li><a href="Blog.html">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="con">
+    <div>
+      <h1 style="color:yellowgreen;font-family: 'Caveat', cursive;">A healthy diet is essential for good health and
+        nutrition.</h1>
+      <p>It protects you against many chronic noncommunicable diseases, such as heart disease, diabetes and cancer.
+        Eating a variety of foods and consuming less salt, sugars and saturated and industrially-produced trans-fats,
+        are essential for healthy diet.</p>
+      <br>
+      <p>A healthy diet comprises a combination of different foods. These include:</p>
+      <ul>
+        <li>Staples like cereals (wheat, barley, rye, maize or rice) or starchy tubers or roots (potato, yam, taro or
+          cassava).</li>
+        <li>Legumes (lentils and beans).</li>
+        <li>Fruit and vegetables.</li>
+        <li>Foods from animal sources (meat, fish, eggs and milk).</li>
+      </ul>
+      <br />
+
+      <button id="generator" type="button">Generate your diet</button>
+    </div>
+    <img src="Images/vege.jpg" alt="">
+  </div>
+
+  <div class="card-container">
+    <div class="card" style="right:2vw;">
+      <h4 style="color:yellowgreen;">Eat plenty of vegetables and fruit</h4>
+      <p>They are important sources of vitamins, minerals, dietary fibre, plant protein and antioxidants.</p>
+    </div>
+    <div class="card" style="right:1vw;">
+      <h4 style="color:yellowgreen;">Eat less fat</h4>
+      <p>Eating too much, particularly the wrong kinds of fat, like saturated and industrially-produced trans-fat, can
+        increase the risk of heart disease and stroke.</p>
+    </div>
+    <div class="card" style="right:2vw;">
+      <h4 style="color:yellowgreen;">Limit intake of sugars</h4>
+      <p>For a healthy diet, sugars should represent less than 10% of your total energy intake</p>
+    </div>
+    <div class="card" style="right:5vw;">
+      <h4 style="color:yellowgreen;">Reduce salt intake</h4>
+      <p>Keeping your salt intake to less than 5g per day helps prevent hypertension and reduces the risk of heart
+        disease and stroke in the adult population.</p>
+    </div>
+
+
+  </div>
+
+  <div class="diet-div" id="div2">
+    <div class="generator">
+      <h3 style="color:black;margin-bottom:20px;">Personalized Diet Generator</h3>
+      <form id="dietForm">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" value=0 required><br><br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select><br><br>
+
+        <label for="goal">Diet Goal:</label>
+        <select id="goal" name="goal">
+          <option value="weightLoss">Weight Loss</option>
+          <option value="weightGain">Weight Gain</option>
+          <option value="maintenance">Maintain Current Weight</option>
+        </select><br><br>
+
+        <button type="button" class="submit" onclick="generateDiet()">Generate Diet Plan</button>
+      </form>
+      <div id="dietPlan" style="margin-top:20px;"></div>
+    </div>
+
+  </div>
+
+  <script>
+    $("#generator").click(function () {
+      $('html,body').animate({
+        scrollTop: $("#div2").offset().top
+      },
+        'slow');
+    });
+    function generateDiet() {
+      const age = document.getElementById('age').value;
+      const gender = document.getElementById('gender').value;
+      const goal = document.getElementById('goal').value;
+
+      let dietPlan = '';
+    if (age === "0") {
+      dietPlan =' Please enter your age';
+      document.getElementById('dietPlan').innerHTML = dietPlan;
+    }else{
+      // Enhanced logic for diet generation
+      if (goal === 'weightLoss') {
+        dietPlan += '<p><strong>Weight Loss Plan:</strong> Focus on creating a calorie deficit while ensuring balanced nutrition. Here are your guidelines:</p>';
+        dietPlan += '<ul>';
+        dietPlan += '<li>Eat 5-6 small meals a day to keep metabolism active.</li>';
+        dietPlan += '<li>Include lean proteins like chicken, fish, tofu, and legumes in every meal.</li>';
+        dietPlan += '<li>Opt for complex carbohydrates like quinoa, brown rice, and sweet potatoes.</li>';
+        dietPlan += '<li>Incorporate plenty of vegetables and low-sugar fruits like berries.</li>';
+        dietPlan += '<li>Avoid processed foods, sugary drinks, and high-calorie snacks.</li>';
+        dietPlan += '<li>Drink at least 8 glasses of water per day.</li>';
+        dietPlan += '</ul>';
+      } else if (goal === 'weightGain') {
+        dietPlan += '<p><strong>Weight Gain Plan:</strong> Focus on consuming more calories than you burn, with a focus on nutrient-dense foods:</p>';
+        dietPlan += '<ul>';
+        dietPlan += '<li>Eat 3 main meals and 2-3 high-calorie snacks per day.</li>';
+        dietPlan += '<li>Include calorie-rich foods like nuts, seeds, avocados, and whole milk products.</li>';
+        dietPlan += '<li>Incorporate protein-rich foods such as eggs, lean meats, and beans.</li>';
+        dietPlan += '<li>Add healthy fats like olive oil, nut butter, and cheese to your meals.</li>';
+        dietPlan += '<li>Drink smoothies or shakes made with protein powder, fruits, and nut butter.</li>';
+        dietPlan += '<li>Avoid empty-calorie foods and focus on nutrient-dense options.</li>';
+        dietPlan += '</ul>';
+      } else if (goal === 'maintenance') {
+        dietPlan += '<p><strong>Maintenance Plan:</strong> Focus on balancing your calorie intake with your activity level to maintain your current weight:</p>';
+        dietPlan += '<ul>';
+        dietPlan += '<li>Eat 3 balanced meals and 1-2 snacks per day.</li>';
+        dietPlan += '<li>Include a variety of proteins, whole grains, fruits, and vegetables.</li>';
+        dietPlan += '<li>Keep portions moderate to avoid overeating.</li>';
+        dietPlan += '<li>Include healthy fats like nuts, seeds, and avocados in your diet.</li>';
+        dietPlan += '<li>Stay hydrated by drinking plenty of water throughout the day.</li>';
+        dietPlan += '<li>Avoid excessive intake of sugary or processed foods.</li>';
+        dietPlan += '</ul>';
+      }
+
+      // Output the diet plan
+      document.getElementById('dietPlan').innerHTML = dietPlan;
+    }
+    
+    }
+  </script>
+</body>
+
+</html>
